@@ -60,7 +60,7 @@ class JavaObject {
     }
 
     public function compare(jobj:Dynamic) {
-        if (Std.isOfType(jobj, JavaObject)
+        if (Std.isOfType(jobj, JavaObject))
             return untyped this.jobject == untyped jobj.jobject;
         return untyped this.jobject == untyped jobj;
     }
