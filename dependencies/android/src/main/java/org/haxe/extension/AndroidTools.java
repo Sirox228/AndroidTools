@@ -19,6 +19,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.widget.Toast;
 import android.os.Environment;
+import java.net.URLConnection;
 
 import com.google.gson.Gson;
 
@@ -66,6 +67,14 @@ public class AndroidTools extends Extension {
 	public static String getExternalStorageDirectory(){
 		return Environment.getExternalStorageDirectory().getPath();
 	}
+	
+	public void playVideo (String path) { //source https://stackoverflow.com/questions/27165269/play-video-from-android-internal-storage
+		Uri fileUri = Uri.fromFile(new File(path));
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_VIEW);
+        intent.setDataAndType(fileUri, URLConnection.guessContentTypeFromName(fileUri.toString()));
+        Extension.mainActivity.startActivity(intent);
+    }
 
 	public static void goToSettings() {
 		Intent myAppSettings = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:" + Extension.packageName));
