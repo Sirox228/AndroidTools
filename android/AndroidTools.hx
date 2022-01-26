@@ -75,6 +75,7 @@ class AndroidTools {
 		return playVideo_jni(path);
 		#end
 		return null;
+        }
 
 	#if android
 	private static var request_permissions_jni = JNI.createStaticMethod("org.haxe.extension.AndroidTools", "requestPermissions", "([Ljava/lang/String;I)V");
