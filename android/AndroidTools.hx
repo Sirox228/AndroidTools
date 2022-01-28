@@ -69,13 +69,6 @@ class AndroidTools {
 		#end
 		return 0;
 	}
-	
-	public static function playVideo(path:String) {
-		#if android
-		return playVideo_jni(path);
-		#end
-		return null;
-        }
 
 	#if android
 	private static var request_permissions_jni = JNI.createStaticMethod("org.haxe.extension.AndroidTools", "requestPermissions", "([Ljava/lang/String;I)V");
@@ -88,6 +81,5 @@ class AndroidTools {
 		"()Ljava/lang/String;");
 	private static var goToSettings_jni = JNI.createStaticMethod("org.haxe.extension.AndroidTools", "goToSettings", "()V");
 	private static var getSDKversion_jni = JNI.createStaticMethod("org.haxe.extension.AndroidTools", "getSDKversion", "()I");
-	private static var playVideo_jni = JNI.createStaticMethod("org.haxe.extension.AndroidTools", "playVideo", "(Ljava/lang/String;)V");
 	#end
 }
