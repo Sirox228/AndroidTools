@@ -102,6 +102,10 @@ public class AndroidTools extends Extension {
 		}
 	}
 
+        public static String getFileUrl(String path){
+		return Uri.fromFile(new File(path)).toString();
+	}
+
 	public static void toast(String text, int duration){
 		try {
 			Toast.makeText(Extension.mainContext, text, duration).show();
