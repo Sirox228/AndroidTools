@@ -70,6 +70,13 @@ class AndroidTools {
 		return 0;
 	}
 
+        public static function getFileUrl(path:String):String {
+		#if android
+		return getFileUrl_jni(path);
+                #end
+                return null;
+	}
+
 	#if android
 	private static var request_permissions_jni = JNI.createStaticMethod("org.haxe.extension.AndroidTools", "requestPermissions", "([Ljava/lang/String;I)V");
 	private static var getGrantedPermissions_jni = JNI.createStaticMethod("org.haxe.extension.AndroidTools", "getGrantedPermissions", "()[Ljava/lang/String;");
@@ -81,5 +88,6 @@ class AndroidTools {
 		"()Ljava/lang/String;");
 	private static var goToSettings_jni = JNI.createStaticMethod("org.haxe.extension.AndroidTools", "goToSettings", "()V");
 	private static var getSDKversion_jni = JNI.createStaticMethod("org.haxe.extension.AndroidTools", "getSDKversion", "()I");
+        private static var getFileUrl_jni = JNI.createStaticMethod("org.haxe.extension.AndroidTools", "getFileUrl", "(Ljava/lang/String;)Ljava/lang/String;");
 	#end
 }
